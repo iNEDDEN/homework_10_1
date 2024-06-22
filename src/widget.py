@@ -1,30 +1,27 @@
-import masks
 from datetime import datetime
+
+from masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(user_input: str) -> str:
     """Функция, которая делает общую маскировку карты или счета"""
     if "Счет" in user_input:
-        user_masked_info = (
-                "Счет " + masks.get_mask_account(user_input[5:])
-        )
+        user_masked_info = "Счет " + get_mask_account(user_input[5:])
     else:
         card_info = user_input.split()
         card_number = str(card_info[-1])
-        user_masked_info = (
-                " ".join(card_info[:-1])
-                + " " + masks.get_mask_card_number(card_number)
-        )
+        user_masked_info = (" ".join(card_info[:-1])
+                            + " " + get_mask_card_number(card_number))
     return user_masked_info
 
 
 def get_data(user_data_input: str) -> str:
     """Функция, которая преобразовывает дату"""
-    new_data = datetime.strptime(
+    new_data_datetime = datetime.strptime(
         user_data_input,
-        '%Y-%m-%dT%H:%M:%S.%f'
+        "%Y-%m-%dT%H:%M:%S.%f"
     )
-    new_data = datetime.strftime(new_data, '%d.%m.%Y')
+    new_data = datetime.strftime(new_data_datetime, "%d.%m.%Y")
     return new_data
 
 

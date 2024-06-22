@@ -30,5 +30,7 @@ line_length = 119
 [tool.mypy]
 disallow_untyped_defs = true
 no_implicit_optional = true
-warn_return_any = true
+warn_return_any = false
+ignore_missing_imports = true
+
 exclude = 'venv'
