@@ -2,7 +2,7 @@ def filter_by_state(user_list: list, state: str = "EXECUTED") -> list:
     """
     Функция возвращает новый список словарей,
     содержащий только те словари, у которых ключ
-    state соответствует указанному значению.
+    state соответствует указанному значению
     """
     filtered_list = list()
     for i in range(len(user_list)):
